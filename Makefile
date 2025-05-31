@@ -8,8 +8,12 @@ bash:
 install:
 	cd docker && docker-compose run --rm php-fpm sh -c 'composer install --no-interaction --no-suggest --ansi'
 
-.PHONY: test
-test:
+.PHONY: run-migrations
+run-migrations:
+	cd docker && docker-compose run --rm php-fpm sh -c 'bin/console doctrine:migrations:migrate'
+
+.PHONY: tests
+tests:
 	cd docker && docker-compose run --rm php-fpm sh -c 'vendor/bin/phpunit --testdox --colors=always'
 
 .PHONY: cs

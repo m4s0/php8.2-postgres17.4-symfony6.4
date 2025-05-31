@@ -1,63 +1,78 @@
-# Application
+# PHP, Postgres, Symfony with Docker Template
 
-Application runs with PHP 8.2 and Postgres:17.4
+A development environment template using PHP 8.2, PostgreSQL 17.4, and Symfony and Docker.
 
-## Environment Setup
+## Table of Contents
 
-1. Copy the example environment file:
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [Development](#development)
+- [Testing and Quality](#testing-and-quality)
 
+## Prerequisites
+
+- Docker
+- Docker Compose
+- Make
+
+## Getting Started
+
+Set up environment variables:
 ```bash
 cp .env.dist .env
 ```
-2. Update `.env` with your configuration (DB credentials, ports, etc.).
+Configure `.env` file with your settings
 
-## Running the Application
+## Development
 
-### Docker Setup
+### Container Management
 
 Build containers:
-
 ```bash
 docker-compose build
 ```
-Run containers:
 
+Start containers:
 ```bash
 docker-compose up -d
 ```
 
-To stop:
-
+Stop containers:
 ```bash
 docker-compose down
 ```
 
-Enter into php container
-
+### Access PHP container:
 ```bash
 make bash
 ```
 
-install dependencies
+### Application Setup
 
+Install dependencies:
 ```bash
 make install
 ```
+### Database Management
 
-run all tests
-
+Run migrations:
 ```bash
-make test
+make run-migrations
 ```
 
-run Coding Standards checks
+## Testing and Quality  
 
+### Run Tests
+```bash
+make tests
+```
+
+### Coding Standards
 ```bash
 make cs
-``` 
+```
 
-run Static Code Analysis
-
+### Static Analysis
 ```bash
 make stan
-``` 
+```
